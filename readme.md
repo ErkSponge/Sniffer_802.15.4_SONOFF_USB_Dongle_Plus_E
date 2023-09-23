@@ -22,7 +22,9 @@ Wireshark can be used to display captured packets.
 ## What's needed
 
 A [SONOFF Zigbee 3.0 USB DONGLE Plus-E](https://sonoff.tech/product/gateway-and-sensors/sonoff-zigbee-3-0-usb-dongle-plus-e/) is required.
+
 ![SONOFF USB DONGLE Plus-E](/docs/Sonoff%20USB%20dongle%20Plus-E.PNG)
+
 And a computer running Windows 10 or Windows 11 with Wireshark.
 
 ## Firmware Flashing
