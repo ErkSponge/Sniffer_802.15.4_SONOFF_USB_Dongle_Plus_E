@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Cortex Debug",
+            "request": "launch",
+            "type": "cortex-debug",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/Output/Sniffer_802.15.4_SONOFF_USB_Dongle_Plus_E/Sniffer_802.15.4_SONOFF_USB_Dongle_Plus_E.elf",
+            "serverpath": "D:/Program Files (x86)/SEGGER/JLink/JLinkGDBServerCL.exe",
+            "servertype": "jlink",
+            "device": "EFR32MG21AxxxF768",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            "svdFile": "${workspaceRoot}/Sources/HAL/EFR32MG21/SVD/EFR32MG21A020F768IM32.svd",
+            "showDevDebugOutput": "both",
+            "postLaunchCommands": ["set output-radix 16"],
+        }
+    ]
+}

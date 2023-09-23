@@ -1,0 +1,13 @@
+{
+    "cortex-debug.variableUseNaturalFormat": true,
+    "files.associations": {
+        "cstdio": "c",
+        "phy.h": "c",
+        "hal.h": "c",
+        "em_chip.h": "c",
+        "stdbool.h": "c",
+        "cstdlib": "c",
+        "mac.h": "c",
+        "crc.h": "c"
+    }
+}

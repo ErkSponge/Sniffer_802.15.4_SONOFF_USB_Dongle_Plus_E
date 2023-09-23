@@ -1,0 +1,43 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Sonoff Plus E",
+            "type": "shell",
+            "command": "D:/prog/GnuWin32/bin/make.exe build -f Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Clean Sonoff Plus E",
+            "type": "shell",
+            "command": "D:/prog/GnuWin32/bin/make.exe clean -f Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "all Sonoff Plus E",
+            "type": "shell",
+            "command": "D:/prog/GnuWin32/bin/make.exe rebuild -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
+    ]
+}

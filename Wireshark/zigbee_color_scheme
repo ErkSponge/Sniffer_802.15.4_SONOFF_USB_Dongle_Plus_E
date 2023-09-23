@@ -1,0 +1,6 @@
+@zigbeeZDP@zbee_zdp@[65535,65535,65535][43690,0,0]
+@zigbeeAPS@zbee_aps@[65535,65535,65535][0,43690,0]
+@zigbeeNWK@zbee_nwk@[65535,65535,65535][0,21845,65535]
+@zigbeeCommand@wpan.frame_type==COMMAND@[65535,65535,65535][55769,26728,26728]
+@zigbeeData@wpan.frame_type==DATA@[65535,65535,65535][0,43690,0]
+@zigbeeACK@wpan.frame_type==ACK@[65535,65535,65535][0,0,0]
