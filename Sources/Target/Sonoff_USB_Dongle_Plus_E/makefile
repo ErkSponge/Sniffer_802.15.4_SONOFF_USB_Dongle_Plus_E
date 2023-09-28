@@ -15,6 +15,8 @@
 
 # useful method to print makefile variable
 # $(info    var is $(VAR))
+# or alternatively to print all make variables
+# $(foreach v, $(.VARIABLES), $(info $(v) = $($(v))))
 
 # adding element to path under windows
 # PowerSheel:
@@ -105,6 +107,7 @@ OBJSIZE = arm-none-eabi-size.exe
 #		   to commander folder
 COMMANDER = commander.exe
 
+$(info    OS is $(OS))
 # Check if gcc is accessible
 # https://stackoverflow.com/questions/5618615/check-if-a-program-exists-from-a-makefile
 ifeq ($(OS),Windows_NT)
@@ -154,7 +157,14 @@ ifeq ($(OS),Windows_NT)
     endif
   endif
 
-# else
+else
+    CC = arm-none-eabi-gcc
+    OBJCOPY = arm-none-eabi-objcopy
+    OBJDUMP = arm-none-eabi-objdump
+    OBJSIZE = arm-none-eabi-size
+    # Commander used to package GBL file
+    # Silicon Labs commander must be installed on the local machine
+    COMMANDER = commander
 #   UNAME_S := $(shell uname -s)
 #   ifeq ($(UNAME_S),Darwin)
 #     ARM_GCC_DIR ?= $(ARM_GCC_DIR_OSX)
@@ -304,12 +314,20 @@ $(OBJECT_DIR)/%.o : %.c | $(OBJECT_DIR)
 
 #Windows note: mkdir requires " when using / as a char separator for folders
 $(OBJECT_DIR):
+ifeq ($(OS),Windows_NT)
 	mkdir "$(OBJECT_DIR)"
+else
+	mkdir -p "$(OBJECT_DIR)"
+endif
 
 clean:
 #only erase directory if it exist
 ifneq ($(wildcard $(OUTPUT_DIR)),)
+ifeq ($(OS),Windows_NT)
 	-rmdir /q /s "$(OUTPUT_DIR)"
+else
+	-rm -r "$(OUTPUT_DIR)"
+endif
 endif
 
 
