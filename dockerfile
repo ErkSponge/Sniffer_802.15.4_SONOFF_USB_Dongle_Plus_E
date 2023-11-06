@@ -19,7 +19,6 @@ RUN apt-get update && \
 
 # Set up a development tools directory
 WORKDIR /home/dev
-ADD . /home/dev
 
 
 # Get and install Arm none eabi GCC compiler
