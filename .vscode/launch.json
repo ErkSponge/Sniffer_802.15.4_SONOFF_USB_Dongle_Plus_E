@@ -5,18 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Cortex Debug",
+            "name": "Sonoff Plus E Debug",
             "request": "launch",
             "type": "cortex-debug",
             "cwd": "${workspaceRoot}",
             "executable": "${workspaceRoot}/Output/Sniffer_802.15.4_SONOFF_USB_Dongle_Plus_E/Sniffer_802.15.4_SONOFF_USB_Dongle_Plus_E.elf",
-            "serverpath": "D:/Program Files (x86)/SEGGER/JLink/JLinkGDBServerCL.exe",
             "servertype": "jlink",
+            "serverpath": "JLinkGDBServerCLExe",
             "device": "EFR32MG21AxxxF768",
             "interface": "swd",
+            "ipAddress": "192.168.0.7",
+            "armToolchainPath": "/home/dev/gcc-arm-none-eabi-10.3-2021.10/bin",
             "runToEntryPoint": "main",
             "svdFile": "${workspaceRoot}/Sources/HAL/EFR32MG21/SVD/EFR32MG21A020F768IM32.svd",
-            "showDevDebugOutput": "both",
+            "showDevDebugOutput": "raw",
             "postLaunchCommands": ["set output-radix 16"],
         }
     ]

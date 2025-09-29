@@ -118,13 +118,23 @@ when sent to the usb dongle Will select channel 11, can be used at anytime
 
 ## How to compile
 
-The project currently build by using gcc arm (gcc-arm-none-eabi) under Windows.
-The project also package the output firmware in a .gbl file using Silicon Labs commander.exe command line utility.
-The Arm compiler suite and Silicon Labs commander.exe can be downloaded from their companies websites.
-A makefile is provided and is intended for gnu make.
-Assuming a path to make.exe is present in environment variable, the following command can be used to compile
+The project builds using a docker image.
+To build the project you will need docker installed and running on your computer.
 
-make all -f .\Sources\Target\Sonoff_USB_Dongle_Plus_E\makefile
+Using vscode, simply open this project in vscode and use the devcontainer provided.
+Compile by issuing:
+```make rebuild -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile```
+
+Alternatively:
+The file Dockerfile can be used to create an image that contains gcc-arm-none-eabi, SiLabs commander and Segger J-link software.
+To locally build the image, you must first download SimplicityCommander-Linux.zip from https://www.silabs.com/documents/login/software/SimplicityCommander-Linux.zip and store it in the same folder as of the Dockerfile.
+
+The docker image can be constructed by issuing:
+
+```docker image build -t erksponge/gcc_arm_commander_jflash .```
+
+and to compile the Sonoff sniffer:
+```docker run --rm -v ".:/home/app" --name build_container erksponge/gcc_arm_commander_jflash:latest make rebuild -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8"```
 
 
 ## What's next
@@ -134,7 +144,6 @@ Here are some wish list items that I have in mind
 - Convert extcap to Python so it will be portable to Linux and Mac.
 - Port to other hardware from other vendor (ATSAMR21 and TI2652P)
 - Improve BSP when porting evolves
-- Learn VSCode dev container (or docker) to create a portable build environment
 - Provide a .gbl having the factory image for user desiring to return to the factory firmware
 - keep having fun...
 

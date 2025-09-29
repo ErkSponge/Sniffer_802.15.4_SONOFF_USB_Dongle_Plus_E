@@ -40,6 +40,12 @@ DEFINES = TARGET_SONOFF_USB_DONGLE_PLUS_E
 OUTPUT_NAME = Sniffer_802.15.4_SONOFF_USB_Dongle_Plus_E
 
 
+actual_path := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+sources_location :=           $(dir $(realpath $(lastword $(MAKEFILE_LIST))))../..
+
+$(info    actual_path is $(actual_path))
+$(info    sources_location is $(sources_location))
+
 #uncomment to serialize make execution to avoid console output mess
 .NOTPARALLEL:
 
@@ -92,20 +98,11 @@ INCLUDE_DIR := 	\
 ####################################################################
 # Toolchain														   #
 ####################################################################
-# The gcc compiler (arm-none-eabi) must be installed on the local machine
-# Windows: the PATH variable must have an entry to the folder containing gcc binaries
-# 		   or have an environement variable named ARM_GCC_DIR_WIN specifying the path
-#		   to gcc folder containing gcc binaries
-CC = arm-none-eabi-gcc.exe
-OBJCOPY = arm-none-eabi-objcopy.exe
-OBJDUMP = arm-none-eabi-objdump.exe
-OBJSIZE = arm-none-eabi-size.exe
-# Commander used to package GBL file
-# Silicon Labs commander.exe must be installed on the local machine
-# Windows: the PATH variable must have an entry to the folder containing commander.exe
-# 		   or have an environement variable named SILABS_COMMANDER_DIR_WIN specifying the path
-#		   to commander folder
-COMMANDER = commander.exe
+CC = arm-none-eabi-gcc
+OBJCOPY = arm-none-eabi-objcopy
+OBJDUMP = arm-none-eabi-objdump
+OBJSIZE = arm-none-eabi-size
+COMMANDER = commander
 
 $(info    OS is $(OS))
 # Check if gcc is accessible
@@ -116,6 +113,18 @@ ifeq ($(OS),Windows_NT)
   # set ARM_GCC_DIR_WIN=D:/prog/gcc/gcc-arm-none-eabi-10.3-2021.10/bin/
   # To add a permanent system variable use "edit system environment variables"
   # verify if gcc is runnable using environment variable ARM_GCC_DIR_WIN
+  CC := $(CC).exe
+  OBJCOPY := $(OBJCOPY).exe
+  OBJDUMP := $(OBJDUMP).exe
+  OBJSIZE := $(OBJSIZE).exe
+
+  # Commander used to package GBL file
+  # Silicon Labs commander.exe must be installed on the local machine
+  # Windows: the PATH variable must have an entry to the folder containing commander.exe
+  # 		   or have an environement variable named SILABS_COMMANDER_DIR_WIN specifying the path
+  #		   to commander folder
+  COMMANDER := $(COMMANDER).exe
+
   ifneq ($(ARM_GCC_DIR_WIN),)
     ## use command "where" with arguments using path:pattern to find gcc
 	ifeq (,$(shell where $(ARM_GCC_DIR_WIN):$(CC) 2>NUL))
@@ -158,19 +167,7 @@ ifeq ($(OS),Windows_NT)
   endif
 
 else
-    CC = arm-none-eabi-gcc
-    OBJCOPY = arm-none-eabi-objcopy
-    OBJDUMP = arm-none-eabi-objdump
-    OBJSIZE = arm-none-eabi-size
-    # Commander used to package GBL file
-    # Silicon Labs commander must be installed on the local machine
-    COMMANDER = commander
-#   UNAME_S := $(shell uname -s)
-#   ifeq ($(UNAME_S),Darwin)
-#     ARM_GCC_DIR ?= $(ARM_GCC_DIR_OSX)
-#   else
-#     ARM_GCC_DIR ?= $(ARM_GCC_DIR_LINUX)
-#   endif
+  #building under linux and/or inside docker container
 endif
 
 

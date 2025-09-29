@@ -6,10 +6,9 @@
         {
             "label": "Build Sonoff Plus E",
             "type": "shell",
-            "command": "D:/prog/GnuWin32/bin/make.exe build -f Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "command": "docker run --rm -v \".:/home/app\" --name build_container erksponge/gcc_arm_commander_jflash:latest make build -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
             "group": {
                 "kind": "build",
-                "isDefault": true
             },
             "problemMatcher": [
                 "$gcc"
@@ -18,7 +17,18 @@
         {
             "label": "Clean Sonoff Plus E",
             "type": "shell",
-            "command": "D:/prog/GnuWin32/bin/make.exe clean -f Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "command": "docker run --rm -v \".:/home/app\" --name build_container erksponge/gcc_arm_commander_jflash:latest make clean -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "group": {
+                "kind": "build",
+            },
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Rebuild Sonoff Plus E",
+            "type": "shell",
+            "command": "docker run --rm -v \".:/home/app\" --name build_container erksponge/gcc_arm_commander_jflash:latest make rebuild -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -28,9 +38,9 @@
             ]
         },
         {
-            "label": "all Sonoff Plus E",
+            "label": "Rebuild Sonoff Plus E attached to Container",
             "type": "shell",
-            "command": "D:/prog/GnuWin32/bin/make.exe rebuild -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
+            "command": "make rebuild -f ./Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile -j8",
             "group": {
                 "kind": "build",
                 "isDefault": true

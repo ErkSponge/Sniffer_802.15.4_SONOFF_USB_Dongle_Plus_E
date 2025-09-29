@@ -1,0 +1,25 @@
+{
+  "name": "Container to build SiLabs projects",
+//  To build your own image, uncomment the build section and comment out the external image link
+//   "build": {
+//     "dockerfile": "../Dockerfile"
+//   },
+    "image": "docker.io/erksponge/gcc_arm_commander_jflash:latest",
+//   "settings": {
+//     "terminal.integrated.shell.linux": "/bin/bash"
+//   },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "mcu-debug.debug-tracker-vscode",
+        "marus25.cortex-debug"
+      ]
+    }
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace,type=bind"
+  ],
+  "workspaceFolder": "/workspace"
+}
