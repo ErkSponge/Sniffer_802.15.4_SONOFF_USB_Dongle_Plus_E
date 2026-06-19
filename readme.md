@@ -156,15 +156,15 @@ Press start once the desired channel is selected
 Capture should start!
 
 ### Linux
-On a Linux computer, the "Zigbee JSON Sniffer: zb_dongle_json_sniffer" will be displayed as one of the available interfaces to capture from<br>
-![wireshark start screen Linux](/docs/wireshark_start_screen_linux.PNG)
-Click on the gear next to the "Zigbee JSON Sniffer: zb_dongle_json_sniffer"
+On a Linux computer, the "Zigbee JSON Sniffer: zb_dongle_json_sniffer" will be displayed as one of the available interface to capture from<br>
+![wireshark start screen Linux](/docs/wireshark_start_screen_linux.png)<br>
+Click on the gear next to the "Zigbee JSON Sniffer: zb_dongle_json_sniffer"<br>
 
-A configuration window will appear to select the serial capture device, channel and Baud rate.
-The baud rate must remain at 1000000.
-Press save once the desired channel is selected
-![wireshark channel selection Linux](/docs/wireshark_selection_linux.PNG)
-Capture can be started by double clicking on "Zigbee JSON Sniffer: zb_dongle_json_sniffer" text
+A configuration window will appear to select the serial capture device, channel and Baud rate.<br>
+The baud rate must remain at 1000000.<br>
+Press save once the desired channel is selected<br>
+![wireshark channel selection Linux](/docs/wireshark_selection_linux.png)<br>
+Capture can be started by double clicking on "Zigbee JSON Sniffer: zb_dongle_json_sniffer" text<br>
 
 Capture should start!
 
