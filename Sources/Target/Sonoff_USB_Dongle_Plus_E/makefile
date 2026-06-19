@@ -235,9 +235,14 @@ LDFLAGS = -mthumb \
 #libraries: How to include a library not using a standard name having "lib" prefix
 # https://stackoverflow.com/questions/10234208/how-do-i-link-a-library-file-in-gcc-that-does-not-start-with-lib
 
+# Extract the name of the current makefile
+# MAKEFILE_LIST is a special variable that contains the list of all makefiles read by make
+# Use this method to workaround issues when using recursive make
+MF := $(lastword $(MAKEFILE_LIST))
+
 rebuild :
-	$(MAKE) clean -f Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile
-	$(MAKE) -j build -f Sources/Target/Sonoff_USB_Dongle_Plus_E/makefile
+	$(MAKE) -f $(MF) clean
+	$(MAKE) -f $(MF) -j build
 
 ###############################################################################
 # below should remain identical between different hardware

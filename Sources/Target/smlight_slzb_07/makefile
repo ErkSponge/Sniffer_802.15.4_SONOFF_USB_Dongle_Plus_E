@@ -1,8 +1,8 @@
 
-# makefile to compile Sniffer for SONOFF Zigbee 3.0 USB DONGLE Plus-E
+# makefile to compile Sniffer for Slimlight SLZB-07
 # intended to be called from project base directory
 # basic usage:
-# make all -f .\Sources\Target\Sonoff_USB_Dongle_Plus_E\makefile
+# make all -f ./Sources/Target/smlight_slzb_07/makefile
 
 # Please note this makefile contains some comments not relevant
 # to the project compilation but are kept for references
@@ -215,13 +215,13 @@ LDFLAGS = -mthumb \
 		  -l:librail_efr32xg21_gcc_release.a \
 		  -lgcc \
 		  -lc_nano \
-		  -T"Sources/Target/Sonoff_USB_Dongle_Plus_E/EFR32MG21A020F768IM32_for_bootloader.ld"
+		  -T"Sources/Target/smlight_slzb_07/EFR32MG21A020F768IM32_for_bootloader.ld"
 
 		  #use this linker file to build without bootloader support
-		  #-T"Sources/Target/Sonoff_USB_Dongle_Plus_E/EFR32MG21A020F768IM32_flash.ld"
+		  #-T"Sources/Target/smlight_slzb_07/EFR32MG21A020F768IM32_flash.ld"
 
 		  #use this linker file to build with bootloader support
-		  #-T"Sources/Target/Sonoff_USB_Dongle_Plus_E/EFR32MG21A020F768IM32_for_bootloader.ld"
+		  #-T"Sources/Target/smlight_slzb_07/EFR32MG21A020F768IM32_for_bootloader.ld"
 
 		  #-lm -lc_nano \
 		  #--specs=nano.specs \
